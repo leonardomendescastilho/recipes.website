@@ -1,0 +1,52 @@
+:root {
+  --clr-error-1: red;
+
+  --clr-white: #ffff;
+  --clr-black: #000;
+  --clr-gray: gray;
+
+  --height: 5.6rem;
+  --body-font: 'Space Grotesk', sans-serif;
+
+  --fw-1: 700;
+  --fw-2: 600;
+  --fw-3: 400;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 500 1.6rem/1.5 var(--body-font);
+  background-color: var(--clr-white);
+
+  & ul {
+    list-style: none;
+  }
+
+  & a {
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  & li {
+    list-style: none;
+  }
+
+  & img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}

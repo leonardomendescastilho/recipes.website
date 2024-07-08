@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('./src/styles/global.css');
+@import url('./src/styles/layout.css');
+
+@media screen and (max-width: 1150px) {
+  .header {
+    & .nav {
+      & .nav__menu {
+        width: 100%;
+        padding: 7.2rem;
+
+        position: fixed;
+        top: -100%;
+        left: 0;
+
+        border-radius: 0 0 5rem 5rem;
+
+        background-color: var(--clr-gray);
+        /* box-shadow: 0 6px 16px rgba(200, 200, 200, 0.2); */
+
+        transition: 0.4s ease;
+      }
+    }
+  }
+}
+
+.header {
+  & .nav {
+    & .nav__menu {
+      &.show-menu {
+        top: 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+  .header {
+    & .nav {
+      height: calc(5.6rem + 2rem);
+      padding-inline: 1rem;
+
+      & .nav__menu {
+        & .nav__list {
+          flex-flow: row;
+          gap: 7rem;
+        }
+      }
+
+      & .nav__close,
+      & .nav__toggle {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    margin-inline: 1.6rem;
+  }
+}

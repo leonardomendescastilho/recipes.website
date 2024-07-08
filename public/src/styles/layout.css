@@ -1,0 +1,56 @@
+.header {
+  width: 100%;
+
+  /* position: fixed; tentar entender pq quando ativo isso, o meu main não aparece*/
+  top: 0;
+  left: 0;
+
+  background-color: var(--clr-gray);
+  z-index: 10;
+
+  & .nav {
+    height: var(--height);
+
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .nav__logo {
+      color: var(--clr-black);
+      font-weight: var(--fw-1);
+    }
+
+    & .nav__menu {
+      & .nav__list {
+        text-align: center;
+        display: flex;
+        flex-flow: column;
+        gap: 2.4rem;
+      }
+
+      & .nav__link {
+        color: var(--clr-black);
+        font-weight: var(--fw-1);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      & .nav__close {
+        position: absolute;
+        top: 1.5rem;
+        right: 2.5rem;
+        cursor: pointer;
+      }
+    }
+
+    & .nav__close,
+    & .nav__toggle {
+      cursor: pointer;
+      font-size: 2.4rem;
+    }
+  }
+}

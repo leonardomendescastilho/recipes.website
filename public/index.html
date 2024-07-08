@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="/" class="nav__logo">XCOMPANY</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list" id="nav-list">
+            <li><a href="/" class="nav__link">Início</a></li>
+            <li><a href="/favoritos" class="nav__link">Favoritos</a></li>
+            <li><a href="/receitas" class="nav__link">Receitas</a></li>
+          </ul>
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-large-line"></i>
+          </div>
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-menu-fill"></i>
+        </div>
+      </nav>
+    </header>
+    <main class="main" id="main-content"></main>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./scripts/router/index.js"></script>
+  </body>
+</html>
