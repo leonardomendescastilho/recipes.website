@@ -1,11 +1,12 @@
 .header {
   width: 100%;
 
-  /* position: fixed; tentar entender pq quando ativo isso, o meu main não aparece*/
+  position: fixed;
   top: 0;
   left: 0;
 
-  background-color: var(--clr-gray);
+  /* background-color: var(--clr-gray); */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
 
   & .nav {
@@ -51,6 +52,112 @@
     & .nav__toggle {
       cursor: pointer;
       font-size: 2.4rem;
+    }
+  }
+}
+
+.main {
+  margin-top: calc(5.6rem + 2rem);
+  width: 100%;
+  height: calc(100dvh - 9.6rem);
+
+  & .home {
+    height: 100%;
+    display: grid;
+    padding-inline: 1.6rem;
+
+    & .home__info {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      gap: 7rem;
+
+      & .home__title {
+        padding-top: 7rem;
+      }
+
+      & .home__subtitle {
+        text-align: center;
+        max-width: 550px;
+        padding: 0.5rem 2rem;
+      }
+    }
+
+    & .home__form {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      & .form__fieldset {
+        border: none;
+
+        & .form__title {
+          margin-bottom: 3rem;
+        }
+
+        & .form__select {
+          width: 100%;
+          padding: 0.8rem 1rem;
+          border-radius: 12px;
+          margin-bottom: 3rem;
+        }
+      }
+
+      & .home__button-search {
+        padding: 1.2rem 3rem;
+        border-radius: 8px;
+
+        cursor: pointer;
+      }
+    }
+  }
+
+  & .recipe {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 2rem;
+    & .recipe__list {
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      gap: 3rem;
+
+      & .recipe__item {
+        width: 350px;
+        height: 400px;
+        padding-block: 1rem;
+        border: solid 1px #ccc;
+        border-radius: 12px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
+        gap: 2rem;
+
+        transition: 0.4s ease;
+
+        &:hover {
+          transform: scale(0.98, 0.98);
+        }
+
+        & .recipe__img {
+          width: 300px;
+          height: 300px;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+
+        & .recipe__button {
+          padding: 1.2rem 3rem;
+          border-radius: 8px;
+
+          cursor: pointer;
+        }
+      }
     }
   }
 }

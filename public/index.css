@@ -3,6 +3,9 @@
 @import url('./src/styles/layout.css');
 
 @media screen and (max-width: 1150px) {
+  .main {
+    margin-top: calc(5.6rem);
+  }
   .header {
     & .nav {
       & .nav__menu {
@@ -15,8 +18,8 @@
 
         border-radius: 0 0 5rem 5rem;
 
-        background-color: var(--clr-gray);
-        /* box-shadow: 0 6px 16px rgba(200, 200, 200, 0.2); */
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
         transition: 0.4s ease;
       }
@@ -54,6 +57,27 @@
       & .nav__toggle {
         display: none;
       }
+    }
+  }
+
+  .main {
+    overflow: hidden;
+    & .home {
+      grid-template-columns: 1fr 1fr;
+
+      & .home__info {
+        padding-top: 10rem;
+
+        & .home__subtitle {
+          text-align: start;
+          max-width: 550px;
+          padding: 0.5rem 2rem;
+        }
+      }
+    }
+
+    & .home__form {
+      padding-top: 25rem;
     }
   }
 }
