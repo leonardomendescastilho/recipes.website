@@ -1,3 +1,5 @@
+const form = document.getElementById('form');
+
 document.addEventListener('DOMContentLoaded', () => {
   const navMenu = document.getElementById('nav-menu');
   const navClose = document.getElementById('nav-close');

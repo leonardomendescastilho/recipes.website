@@ -11,8 +11,8 @@ export function getUrl(event) {
   handleUrlLocation();
 }
 
-export const handleUrlLocation = async () => {
-  let location = window.location.pathname;
+export const handleUrlLocation = async (location) => {
+  location = window.location.pathname || location;
 
   if (location.length === 0) {
     location = '/';
@@ -33,12 +33,21 @@ export const handleUrlLocation = async () => {
     }
 
     const html = await response.text();
-
     const main = document.getElementById('main-content');
 
     if (main) {
       main.innerHTML = html;
       document.title = route.title;
+    }
+
+    if (route.script) {
+      try {
+        const module = await import(route.script);
+
+        if (module.default) module.default();
+      } catch (error) {
+        console.error('Error loading script', error);
+      }
     }
   } catch (error) {
     console.error('Error loading template', error);

@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
 
-  /* background-color: var(--clr-gray); */
+  background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
 
