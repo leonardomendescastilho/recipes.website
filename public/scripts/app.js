@@ -62,11 +62,11 @@ export function getElements(pageName) {
 }
 
 export function openModal(meal) {
-  console.log('modal is open.. with meal ', meal);
-
   const modal = document.getElementById('modal');
   const modalContainer = document.getElementById('modal-container');
   const modalBackground = document.getElementById('modal-background');
+  const itemId = meal.idMeal;
+
   if (modalBackground) {
     modalBackground.addEventListener('click', () => {
       modal.classList.remove('open');
@@ -133,13 +133,12 @@ export function openModal(meal) {
 
   const button = document.getElementById('modal-button');
   button.addEventListener('click', () => {
-    if (localStorage.getItem(`Meal${meal.mealId}`) === `Meal${meal.mealId}`) {
-      console.log('O item já existe na lista');
-      //open modal error
+    if (localStorage.getItem(`meal${itemId}`)) {
+      console.log('Erro: Item já existe no local storage.');
+      //abrir modal de erro
     } else {
-      console.log('O item não existe, vai ser adicionado');
-      localStorage.setItem(`Meal${meal.mealId}`, `Meal${meal.mealId}`);
-      //openFavoriteModal
+      localStorage.setItem(`meal${itemId}`, JSON.stringify(itemId));
+      //abrir modal de item salvo
     }
   });
 
