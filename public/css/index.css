@@ -61,6 +61,7 @@
   }
 
   .main {
+    /* posso deixar overflow hidden, quando clicar botão, mudar para overflow auto */
     overflow: hidden;
     & .home {
       grid-template-columns: 1fr 1fr;
@@ -78,6 +79,13 @@
 
     & .home__form {
       padding-top: 25rem;
+    }
+
+    & .favorite {
+      & .fav__list {
+        & .fav__item-img {
+        }
+      }
     }
   }
 }
