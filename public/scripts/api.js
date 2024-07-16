@@ -1,5 +1,5 @@
 import Router from './router/router.js';
-import { openModal } from './app.js';
+import { displayModal } from './app.js';
 
 export async function getDataApi(url) {
   if (url) {
@@ -19,7 +19,7 @@ export async function getDataApi(url) {
   }
 }
 
-export async function getMealId(url) {
+export async function getIdApi(url, pageName) {
   if (url) {
     try {
       const response = await fetch(url);
@@ -29,7 +29,14 @@ export async function getMealId(url) {
       const data = await response.json();
       const meal = data.meals[0];
 
-      openModal(meal);
+      if (pageName == 'modal') {
+        displayModal(meal);
+        console.log(`Esse é o valor indo para o modal`, meal);
+      }
+
+      if (pageName == 'favorite') {
+        return meal;
+      }
     } catch (error) {
       console.error(`Not foud API data-id`, error);
     }

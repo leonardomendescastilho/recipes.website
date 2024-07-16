@@ -1,6 +1,7 @@
-import { getDataApi, getMealId } from './api.js';
+import { getDataApi, getIdApi } from './api.js';
+import Display from './Display.js';
 
-export function getElements(pageName) {
+export async function getElements(pageName) {
   if (pageName == 'home') {
     const form = document.getElementById('form');
     console.log('Home loaded...');
@@ -50,31 +51,25 @@ export function getElements(pageName) {
         button.addEventListener('click', () => {
           const dataId = button.getAttribute('data-id');
           const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${dataId}`;
-          getMealId(url);
+          getIdApi(url, 'modal');
         });
       });
     }
   }
 
   if (pageName == 'favorite') {
-    console.log('favorite loaded...');
+    Display.favorite();
   }
 }
 
-export function openModal(meal) {
+export function displayModal(meal) {
   const modal = document.getElementById('modal');
   const modalContainer = document.getElementById('modal-container');
   const modalBackground = document.getElementById('modal-background');
   const itemId = meal.idMeal;
 
-  if (modalBackground) {
-    modalBackground.addEventListener('click', () => {
-      modal.classList.remove('open');
-    });
-  }
-
-  const youtubeUrl = meal.strYoutube;
-  const ytEmbeded = youtubeUrl.replace('watch?v=', 'embed/');
+  // const youtubeUrl = meal.strYoutube;
+  // const ytEmbeded = youtubeUrl.replace('watch?v=', 'embed/');
 
   modalContainer.innerHTML = `
   <h3 class="modal__title">${meal.strMeal}</h3>
@@ -116,31 +111,80 @@ export function openModal(meal) {
      </ul>
    </div>
    <h3>Veja como prepar essa receita</h3>
-   <iframe
-     width="560"
-     height="315"
-     src=${ytEmbeded}
-     frameborder="0"
-     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-     allowfullscreen></iframe>
-
+ 
    <button
    class="modal__button"
    id="modal-button"
    >Favoritos</button>
 
 `;
+  if (modalBackground) {
+    modalBackground.addEventListener('click', () => {
+      console.log('o conteúdo do container foi apagado');
+      modal.classList.remove('open');
+    });
+  }
 
   const button = document.getElementById('modal-button');
-  button.addEventListener('click', () => {
-    if (localStorage.getItem(`meal${itemId}`)) {
-      console.log('Erro: Item já existe no local storage.');
-      //abrir modal de erro
-    } else {
-      localStorage.setItem(`meal${itemId}`, JSON.stringify(itemId));
-      //abrir modal de item salvo
-    }
-  });
+  if (button) {
+    button.addEventListener('click', () => {
+      let mealsList = [];
+      let mealsFav = localStorage.getItem('mealsFav');
+      if (mealsFav) {
+        mealsList = JSON.parse(mealsFav);
+      }
+
+      let isMealInList = mealsList.includes(meal);
+      if (isMealInList) {
+        console.log('o item já está adicionado na lista');
+        //abrir modal de error
+      } else {
+        mealsList.push(meal);
+        localStorage.setItem('mealsFav', JSON.stringify(mealsList));
+        console.log('o item foi adiciona na lista com sucesso');
+        //abrir modal adicionado com sucesso
+      }
+    });
+  }
 
   modal.classList.add('open');
 }
+
+// async function displayFavorite(meal) {
+//   const favList = document.getElementById('fav-list');
+//   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${meal}`;
+//   const data = await getIdApi(url, 'favorite');
+
+//   // fav inner
+
+//   const buttonClose = document.querySelectorAll('.fav__button-todel');
+//   const buttonView = document.querySelectorAll('.fav__button-toview');
+
+//   buttonClose.forEach((button) => {
+//     button.addEventListener('click', () => {
+//       const dataId = button.getAttribute('data-id');
+//       let mealsList = [];
+//       let mealsFav = localStorage.getItem('mealsFav');
+//       if (mealsFav) {
+//         mealsList = JSON.parse(mealsFav);
+//       }
+
+//       let isMealInList = mealsList.includes(dataId);
+//       if (isMealInList) {
+//         mealsList = mealsList.filter((item) => item !== dataId);
+//         localStorage.setItem('mealsFav', JSON.stringify(mealsList));
+//         console.log('o item foi removido da lista');
+//       } else {
+//         console.log('o item não está na lista');
+//       }
+//     });
+//   });
+
+//   buttonView.forEach((button) => {
+//     button.addEventListener('click', () => {
+//       const dataId = button.getAttribute('data-id');
+//       const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${dataId}`;
+//       getIdApi(url, 'modal');
+//     });
+//   });
+// }
