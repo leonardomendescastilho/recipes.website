@@ -16,6 +16,7 @@ export async function getElements(pageName) {
 
 	if (pageName == 'recipe') {
 		const allMealsArea = JSON.parse(localStorage.getItem('mealsArea'));
+		console.log('recipe start');
 
 		if (allMealsArea) {
 			Display.recipe(allMealsArea);
