@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	handleNavLinkClick();
 	handleNavChange();
 	Router.init('home');
+	localStorage.setItem('mealsFavorite', JSON.stringify([]));
 });
 
 function handleNavLinkClick() {
