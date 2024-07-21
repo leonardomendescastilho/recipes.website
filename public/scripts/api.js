@@ -1,7 +1,7 @@
-import Display from './Display.js';
+import { handleOpenModal } from './modal.js';
 import Router from './router/router.js';
 
-export async function getDataApi(url) {
+export async function getMealAreaApi(url) {
 	if (url) {
 		try {
 			const response = await fetch(url);
@@ -19,7 +19,7 @@ export async function getDataApi(url) {
 	}
 }
 
-export async function getIdApi(dataId, pageName) {
+export async function getMealIdApi(dataId, pageName) {
 	const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${dataId}`;
 
 	if (url) {
@@ -35,7 +35,7 @@ export async function getIdApi(dataId, pageName) {
 			const meal = data.meals[0];
 
 			if (pageName == 'recipe' || pageName == 'favorite') {
-				Display.handleOpenModal(meal);
+				handleOpenModal(meal);
 			}
 		} catch (error) {
 			console.error(`Not found API data-id`, error);

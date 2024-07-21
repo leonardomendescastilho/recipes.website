@@ -1,4 +1,4 @@
-import { getElements } from '../app.js';
+import { renderElementsOnHtml } from '../app.js';
 
 const Router = {
   async init(pageName) {
@@ -28,7 +28,7 @@ const Router = {
   async renderPage(html, pageName) {
     const mainEl = document.getElementById('main-content');
     mainEl.innerHTML = html;
-    getElements(pageName);
+    renderElementsOnHtml(pageName);
   },
 };
 

@@ -1,26 +1,23 @@
-import { getDataApi } from './api.js';
+import { getMealAreaApi } from './api.js';
 import Display from './Display.js';
 
-export async function getElements(pageName) {
+export async function renderElementsOnHtml(pageName) {
 	if (pageName == 'home') {
-		const form = document.getElementById('form');
+		const formEl = document.getElementById('form');
 
-		form.addEventListener('submit', (event) => {
+		formEl.addEventListener('submit', (event) => {
 			event.preventDefault();
-			const option = document.getElementById('area').value;
-			const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${option}`;
 
-			getDataApi(url);
+			const optionValue = document.getElementById('area').value;
+			const url = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${optionValue}`;
+
+			getMealAreaApi(url);
 		});
 	}
 
 	if (pageName == 'recipe') {
-		const allMealsArea = JSON.parse(localStorage.getItem('mealsArea'));
-		console.log('recipe start');
-
-		if (allMealsArea) {
-			Display.recipe(allMealsArea);
-		}
+		const mealsArea = JSON.parse(localStorage.getItem('mealsArea'));
+		Display.recipe(mealsArea);
 	}
 
 	if (pageName == 'favorite') {

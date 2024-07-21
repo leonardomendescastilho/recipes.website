@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	handleNavLinkClick();
 	handleNavChange();
 	Router.init('home');
-	localStorage.setItem('mealsFavorite', JSON.stringify([]));
 });
 
 function handleNavLinkClick() {
@@ -19,6 +18,10 @@ function handleNavLinkClick() {
 	document.querySelector('.fav__link').addEventListener('click', (event) => {
 		event.preventDefault();
 		Router.init('favorite');
+
+		// if (JSON.parse(localStorage.getItem('mealsFavorite'))) {
+		// 	localStorage.setItem('mealsFavorite', JSON.stringify([]));
+		// }
 	});
 }
 
