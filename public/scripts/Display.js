@@ -13,8 +13,10 @@ const Display = {
 
 		const mealsFavoriteList = JSON.parse(localStorage.getItem('mealsFavorite'));
 
-		if (!mealsFavoriteList || mealsFavoriteList.length === 0)
+		if (!mealsFavoriteList || mealsFavoriteList.length === 0) {
 			favoriteListContainer.innerHTML = `${FAVORITE_NONE_MESSAGE}`;
+			return;
+		}
 
 		if (mealsFavoriteList) {
 			mealsList = mealsFavoriteList;

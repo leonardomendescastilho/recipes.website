@@ -19,8 +19,8 @@ export async function getMealAreaApi(url) {
 	}
 }
 
-export async function getMealIdApi(dataId, pageName) {
-	const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${dataId}`;
+export async function getMealIdApi(mealId, pageName) {
+	const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
 
 	if (url) {
 		try {
